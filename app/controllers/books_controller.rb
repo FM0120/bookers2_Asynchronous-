@@ -5,6 +5,7 @@ before_action :set_book
     @book = Book.find(params[:id])
     @books = Book.new
     @user = User.find_by(id: @book.user_id)
+    @book_comment = BookComment.new
      redirect_to books_url if @book.blank?
   end
   

@@ -4,5 +4,8 @@ Rails.application.routes.draw do
     get '/home/about' => 'homes#about'
     get '/users/logout' => 'devise/sessions#destroy'
     resources :users,only: [:show,:index,:edit,:update, :destroy,:index]
-    resources :books, only: [:new, :create, :index, :show, :edit, :destroy,:update]
+    resources :books, only: [:new, :create, :index, :show, :edit, :destroy,:update] do
+     resource :favorite, only: [:create, :destroy]
+     resources :book_comments, only: [:create, :destroy]
+   end
   end
